@@ -125,8 +125,8 @@
                 console.warn('Interstitial ad not loaded');
                 return;
             }
-            gameInstance.SendMessage('MSStartIntegration', 'MuteAudio');
-            $msstart.showAdsAsync(interstitialAdInstance.instanceId).then(ad => {
+            $msstart.showAdsAsync(interstitialAdInstance.instanceId).then(ad => {  
+               gameInstance.SendMessage('MSStartIntegration', 'MuteAudio');
                 ad.showAdsCompletedAsync.then(() => {
                     console.log('Interstitial completed');
                     gameInstance.SendMessage('MSStartIntegration', 'UnmuteAudio');
@@ -196,6 +196,7 @@
 
 </body>
 </html>
+
 
 
 
