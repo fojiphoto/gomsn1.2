@@ -157,15 +157,9 @@
                 return;
             }
 
-            // 🔇 Mute game audio before showing ad
-            if (typeof gameInstance !== 'undefined' && gameInstance.SendMessage) {
-                gameInstance.SendMessage('MSStartIntegration', 'MuteAudio');
-            } else {
-                console.error('❌ Unity gameInstance.SendMessage not ready');
-                return; // Exit early if Unity not ready
-            }
 
             $msstart.showAdsAsync(rewardedAdInstance.instanceId).then(ad => {
+                 gameInstance.SendMessage('MSStartIntegration', 'MuteAudio');
                 ad.showAdsCompletedAsync.then(() => {
                     console.log('Rewarded ad watched fully');
                     if (typeof gameInstance !== 'undefined' && gameInstance.SendMessage) {
@@ -196,6 +190,7 @@
 
 </body>
 </html>
+
 
 
 
